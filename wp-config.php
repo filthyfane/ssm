@@ -18,13 +18,13 @@ define('DISABLE_WP_CRON', true);
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'instruir_ssm');
+define('DB_NAME', 'ssm_local');
 
 /** MySQL database username */
-define('DB_USER', 'instruir_ssm');
+define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', '~?V}%]U%!JT5n;0kJ[ewKU+T');
+define('DB_PASSWORD', '');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
