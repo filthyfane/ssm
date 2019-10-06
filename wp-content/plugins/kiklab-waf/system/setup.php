@@ -158,7 +158,7 @@ add_action('template_redirect', function(){
 		//&& !in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'))
 		&& !KIK_DOING_CRON
 	){
-		//wp_redirect(get_site_url(null, 'login-to-ssm')); exit;
+		wp_redirect(get_site_url(null, 'login-to-ssm')); exit;
 		//auth_redirect(); 
 	}
 	//if (is_user_logged_in() && is_admin() && (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') && !in_array(wp_get_current_user()->ID, array('1'))) { wp_redirect(site_url()); }
