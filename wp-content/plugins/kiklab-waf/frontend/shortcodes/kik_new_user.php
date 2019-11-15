@@ -18,8 +18,7 @@ function kik_new_user_FUNC($atts, $content = null) {
 		global $wp_query;
 		$user = $wp_query->get_queried_object();
 		//echo DrawObject($user);
-		$kik_user_roles = get_user_meta($user->ID, 'kik_user_roles', true);
-		?>
+		$kik_user_roles = get_user_meta($user->ID, 'kik_user_roles', true);?>
 		<form name="kik_user" action="" method="post">
 			
 			<input type="hidden" id="ID" name="ID" value="<?php echo $user->ID; ?>" />

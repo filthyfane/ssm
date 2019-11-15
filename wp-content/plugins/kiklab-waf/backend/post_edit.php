@@ -335,16 +335,4 @@ function modify_post_title($data, $postarr) {
 	}
 	return $data;
 }
-
-
-
-
-
-
-
-
-
-
-/**/
-
 ?>

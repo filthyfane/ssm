@@ -14,6 +14,7 @@
 			foreach ($user->roles as $role){
 				switch($role){
 					case 'kik_ssm':
+					case 'administrator':
 						break;
 					case 'kik_inspector_ssm':
 						$multiselect[] = 'kik_company_inspector';

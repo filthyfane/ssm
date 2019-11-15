@@ -40,7 +40,6 @@
 		} else {
 			
 			// UPDATE USER
-			
 			$userId = $_POST['userId'];
 			$roles = [];
 			foreach($_POST['roles'] as $role){
@@ -52,10 +51,9 @@
 				'first_name' => $_POST['userFirstName'],
 				'last_name' => $_POST['userLastName'],
 				'user_mail' => $_POST['userMail'],
-				'role' => $roles
 			];
+
 			$userId = wp_update_user($userdata);
-			
 			$oUser = new WP_User($userId);
 			$oUser->set_role('');
 			foreach($_POST['roles'] as $role){
@@ -81,19 +79,5 @@
 		
 		echo json_encode($response);
 		die();
-	}
-	
-	function passwordValidator($pass, $confirmPass){	
-		if($pass !== $confirmPass){
-			returnError('Câmpurile Parolă și Confirmă parola nu sunt identice');
-		} elseif(strlen($pass) < 8){
-			returnError('Parola setată trebuie să aibă minimum 8 caractere și trebuie să conțină litere, cifre și caractere speciale');
-		} elseif(!preg_match("/[a-zA-Z]/", $pass)){
-			returnError('Parola setată trebuie să conțină litere');
-		} elseif(!preg_match("/\d/",$pass)){
-			returnError('Parola setată trebuie să conțină cel puțin o cifră');
-		} elseif(!preg_match("/[^a-zA-Z\d]/")){
-			returnError('Parola setată nu conține caractere speciale');
-		}
 	}
 ?>

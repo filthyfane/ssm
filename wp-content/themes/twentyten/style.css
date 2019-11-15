@@ -15,8 +15,9 @@ a { color: #3f87d0; text-decoration: underline; }
 
 #wrapper {
 	position: relative;
-	/*width: 70%;
-	min-width: 960px;*/
+	
+}
+#main {
 	width: 93%;
 	max-width: 1337px;
 	margin: 0 auto;

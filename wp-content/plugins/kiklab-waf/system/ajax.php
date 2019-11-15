@@ -19,6 +19,7 @@ include(KIK_PLUGIN_ABSPATH . 'system/ajax/ajax_Save_Company_Settings.php');
 include(KIK_PLUGIN_ABSPATH . 'system/ajax/ajax_Delete_Posts.php');
 include(KIK_PLUGIN_ABSPATH . 'system/ajax/ajax_Delete_User.php');
 include(KIK_PLUGIN_ABSPATH . 'system/ajax/ajax_Update_Taxonomy_Terms.php');
+include(KIK_PLUGIN_ABSPATH . 'system/ajax/ajax_Update_Author.php');
 
 #####------------------------------------
 ##### PROCESS AJAX REQUESTS
@@ -90,6 +91,23 @@ function validatePostId($postId, $postType){
 	}
 }
 
+#####------------------------------------------
+##### GLOBAL FUNCTION FOR CHECKING THE PASSWORD
+#####------------------------------------------
+function passwordValidator($pass, $confirmPass){	
+	if($pass !== $confirmPass){
+		returnError('Câmpurile Parolă și Confirmă parola nu sunt identice');
+	} elseif(strlen($pass) < 8){
+		returnError('Parola setată trebuie să aibă minimum 8 caractere și trebuie să conțină litere, cifre și caractere speciale');
+	} elseif(!preg_match("/[a-zA-Z]/", $pass)){
+		returnError('Parola setată trebuie să conțină litere');
+	} elseif(!preg_match("/\d/", $pass)){
+		returnError('Parola setată trebuie să conțină cel puțin o cifră');
+	} elseif(!preg_match("/[^a-zA-Z\d]/", $pass)){
+		returnError('Parola setată nu conține caractere speciale');
+	}
+}
+
 ##### EDIT POST: Select CAEN
 add_action('wp_ajax_KIK_ACTION_CAEN_Select', 'KIK_ACTION_CAEN_Select_FUNC');
 add_action('wp_ajax_nopriv_KIK_ACTION_CAEN_Select', 'KIK_ACTION_CAEN_Select_FUNC');
@@ -122,12 +140,9 @@ include(KIK_PLUGIN_ABSPATH . 'system/ajax/ajax_Save_New_Term.php');
 add_action('wp_ajax_KIK_ACTION_Term_Add', 'KIK_ACTION_Term_Add_FUNC');
 add_action('wp_ajax_nopriv_KIK_ACTION_Termt_Add', 'KIK_ACTION_Term_Add_FUNC');
 function KIK_ACTION_Term_Add_FUNC() {
-	
 	global $wpdb;
 	
-	$row_id = rand(1000000, 9999999);
-	
-	?>
+	$row_id = rand(1000000, 9999999); ?>
 	
 	<tr>
 		<td colspan="2">
@@ -146,18 +161,10 @@ function KIK_ACTION_Term_Add_FUNC() {
 				</tr>
 			</table>
 		</td>
-	</tr>
-	
-	<?php
+	</tr><?php
 	
 	wp_die();
 }
-
-
-
-
-
-
 
 
 ##### FUNCTION GET FREQUENCY INTERVAL

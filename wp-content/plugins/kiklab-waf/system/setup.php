@@ -71,10 +71,16 @@ function kik_add_scripts() {
 	}
 	
 	if (is_page('login-to-ssm')) {
+		//var_dump(wp_hash_password('stefan'));
 		wp_enqueue_style('login-to-ssm', plugins_url('style/login-to-ssm.css', dirname(__FILE__)));
 		wp_enqueue_script('script-login-to-ssm', plugins_url('scripts/script_login_to_ssm.js', dirname(__FILE__)), array('jquery'));
 	}
 	
+	if (is_author()) {
+		wp_enqueue_script('script-author', plugins_url('scripts/script_author.js', dirname(__FILE__)), array('jquery'));
+	}
+
+
 	if (is_page('setari-companie')) {
 		wp_enqueue_script('script-save-company-settings', plugins_url('scripts/script_company_settings.js', dirname(__FILE__)), array('jquery'));
 	}

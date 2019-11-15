@@ -153,7 +153,6 @@ $(document).ready(function(){
 		var userId = $(event.relatedTarget).attr('user-id');
 		modal.find('#btn-company-user').attr('user-id', userId);
 		
-		
 		$.ajax({
 			type: 'POST',
 			url: WP_PARAMS.URL_AJAX,
